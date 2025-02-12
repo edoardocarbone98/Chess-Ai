@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gioca contro Edoardo Chess AI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.css" />
+    
+    <!-- Caricamento corretto del CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard.min.css" />
+
     <style>
         body {
             text-align: center;
@@ -26,16 +29,17 @@
     <h2>Gioca contro Edoardo Chess AI</h2>
     <div id="board"></div>
     <button onclick="resetGame()">Reset</button>
-    
-    <!-- Caricamento corretto degli script -->
+
+    <!-- Caricamento degli script nell'ordine corretto -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard.min.js"></script>
+
     <script>
         var board;
         var game = new Chess();
 
+        // Assicuriamoci che tutto venga caricato correttamente
         document.addEventListener("DOMContentLoaded", function() {
             board = Chessboard('board', {
                 draggable: true,
@@ -51,5 +55,4 @@
 </body>
 </html>
 
-    
   
