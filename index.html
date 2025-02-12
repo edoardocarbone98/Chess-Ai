@@ -6,7 +6,7 @@
     <title>Gioca contro Edoardo Chess AI</title>
     
     <!-- Caricamento corretto del CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.css" />
 
     <style>
         body {
@@ -30,29 +30,34 @@
     <div id="board"></div>
     <button onclick="resetGame()">Reset</button>
 
-    <!-- Caricamento degli script nell'ordine corretto -->
+    <!-- Caricamento degli script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.js"></script>
 
     <script>
+        // Controllo se chessboard.js viene caricato
+        console.log("Chessboard.js:", typeof Chessboard);
+
         var board;
         var game = new Chess();
 
-        // Assicuriamoci che tutto venga caricato correttamente
-        document.addEventListener("DOMContentLoaded", function() {
+        window.onload = function() {
             board = Chessboard('board', {
                 draggable: true,
                 dropOffBoard: 'snapback'
             });
-        });
+            console.log("Scacchiera inizializzata!");
+        };
 
         function resetGame() {
             game = new Chess();
             board.position(game.fen());
+            console.log("Partita resettata!");
         }
     </script>
 </body>
 </html>
+
 
   
