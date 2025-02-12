@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gioca contro Edoardo Chess AI</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/js/chessboard.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard.min.css" />
     <style>
@@ -32,37 +32,15 @@
     <script>
         var board = Chessboard('board', {
             draggable: true,
-            dropOffBoard: 'snapback',
-            onDrop: handleMove
+            dropOffBoard: 'snapback'
         });
         var game = new Chess();
         
-        async function handleMove(source, target) {
-            let move = source + target;
-            if (game.move({ from: source, to: target }) === null) {
-                return 'snapback';
-            }
-            board.position(game.fen());
-            
-            let response = await fetch("https://tuo-server.com/move", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ move: move })
-            });
-            
-            let data = await response.json();
-            if (data.ai_move) {
-                game.move(data.ai_move);
-                board.position(game.fen());
-            }
-        }
-
-        async function resetGame() {
-            let response = await fetch("https://tuo-server.com/reset");
-            let data = await response.json();
+        function resetGame() {
             game = new Chess();
             board.position(game.fen());
         }
     </script>
 </body>
 </html>
+
