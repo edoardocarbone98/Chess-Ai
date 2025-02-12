@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gioca contro Edoardo Chess AI</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/js/chessboard.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard.min.css" />
     <style>
         body {
             text-align: center;
@@ -29,13 +27,20 @@
     <div id="board"></div>
     <button onclick="resetGame()">Reset</button>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboardjs/1.0.0/chessboard.min.js"></script>
+    
     <script>
-        var board = Chessboard('board', {
-            draggable: true,
-            dropOffBoard: 'snapback'
-        });
+        var board;
         var game = new Chess();
-        
+
+        document.addEventListener("DOMContentLoaded", function() {
+            board = Chessboard('board', {
+                draggable: true,
+                dropOffBoard: 'snapback'
+            });
+        });
+
         function resetGame() {
             game = new Chess();
             board.position(game.fen());
@@ -43,4 +48,3 @@
     </script>
 </body>
 </html>
-
